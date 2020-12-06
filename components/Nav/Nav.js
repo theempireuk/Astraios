@@ -51,7 +51,7 @@ const MobileNav = () => {
 					{ label: 'Blog', href: '#blog'},
 					{ label: 'Features', href: '#features'},
 					{ label: 'Login'}
-				]}>
+				]} justifyContent={"end"} style={{width: '100px'}}>
 			</Menu>
 		</Wrapper>
 	)
