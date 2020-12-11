@@ -3,8 +3,7 @@ import { Wrapper } from './styles';
 import Nav from '../Nav';
 import Footer from '../Footer';
 import Announcement from '../Announcement'
-import { Grommet } from 'grommet';
-import theme from '../../theme';
+import { Grommet, grommet } from 'grommet';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
@@ -15,7 +14,7 @@ const GlobalStyles = createGlobalStyle`
 
 export const Layout = ({ children, ...props }) => {
 	return (
-		<Grommet theme={theme}>
+		<Grommet theme={grommet}>
 			<GlobalStyles/>
 			<Announcement>Announcement</Announcement>
 			<Wrapper {...props}>

@@ -5,7 +5,7 @@ import { Wrapper } from './styles';
 export const Feature = ({reverse, title, body}) => {
 	return (
 		<Box align={'center'} justify={"center"} gap={'large'} direction={reverse ? "row-reverse" : 'row'} margin={{vertical: 'large'}} wrap={true}>
-			<Box flex={'2'} direction={'column'}>
+			<Box flex={'grow'} direction={'column'}>
               <Heading level={'2'} margin={'none'}>{title}</Heading>
               <Paragraph size={'small'} responsive>{body}</Paragraph>
               <Anchor label={'Read more'} size={'small'} color={'neutral-3'}/>
