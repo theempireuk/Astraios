@@ -77,7 +77,7 @@ export default function Home() {
     }).then(() => setSubmitted(true)).catch((error) => alert(error))
   }
   useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => {
-    orm.setAttribute("name", "Astraios Beta Signup")
+    form.setAttribute("name", "Astraios Beta Signup")
     form.setAttribute("data-netlify", true)
     form.addEventListener("submit", (e) => handleSubmit(form, e))
   }), [])
