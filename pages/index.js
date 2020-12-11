@@ -1,5 +1,5 @@
 import { Anchor, Box, Button, Heading, Image, Paragraph, Text, Form, FormField, TextInput, MaskedInput, CheckBox } from 'grommet';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Feature } from '../components/Feature/Feature';
 import Layout from '../components/Layout'
@@ -66,6 +66,7 @@ const content = {
 
 export default function Home() {
   const [index, setIndex] = useState(0);
+  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => form.setAttribute("netlify", true)), [])
   return (
     <Layout>
       <Box round margin={'large'} pad={{ bottom: "large" }} id={'home'}> 
@@ -118,7 +119,7 @@ export default function Home() {
         <Heading size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'dark-1'} round pad={'large'}>
-          <Form netlify>
+          <Form>
             <FormField label="Name" name="name">
               <TextInput name="name" />
             </FormField>
