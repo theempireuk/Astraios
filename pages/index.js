@@ -67,19 +67,21 @@ const content = {
 export default function Home() {
   const [index, setIndex] = useState(0)
   const [submitted, setSubmitted] = useState(false)
-  const handleSubmit = (form, e) => {
-    e.preventDefault()
-    let formData = new FormData(form)
-    fetch('/', {
-      method: 'POST',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString()
-    }).then(() => setSubmitted(true)).catch((error) => alert(error))
-  }
+  // const handleSubmit = (form, e) => {
+  //   e.preventDefault()
+  //   let formData = new FormData(form)
+  //   fetch('/', {
+  //     method: 'POST',
+  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  //     body: new URLSearchParams(formData).toString()
+  //   }).then(() => setSubmitted(true)).catch((error) => alert(error))
+  // }
   useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => {
-    form.setAttribute("name", "Astraios Beta Signup")
-    form.setAttribute("data-netlify", true)
-    form.addEventListener("submit", (e) => handleSubmit(form, e))
+    // form.setAttribute("name", "Astraios Beta Signup")
+    // form.setAttribute("form-name", "Astraios Beta Signup")
+    // form.setAttribute("data-netlify", true)
+    // form.addEventListener("submit", (e) => handleSubmit(form, e))
+    form.addEventListener("submit", (e) => setSubmitted(true))
   }), [])
   return (
     <Layout>
@@ -133,7 +135,7 @@ export default function Home() {
         <Heading size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'dark-1'} round pad={'large'}>
-          <Form>
+          <Form name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="Astraios Beta Signup" />
             <FormField label="Name" name="name">
               <TextInput name="name" />
