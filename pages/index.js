@@ -64,18 +64,18 @@ const content = {
   }
 }
 
-const handleSubmit = (form, e) => {
-  e.preventDefault()
-  let formData = new FormData(form)
-  fetch('/', {
-    method: 'POST',
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: new URLSearchParams(formData).toString()
-  }).then(() => console.log('Form successfully submitted')).catch((error) => alert(error))
-}
-
 export default function Home() {
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0)
+  const [submitted, setSubmitted] = useState(false)
+  const handleSubmit = (form, e) => {
+    e.preventDefault()
+    let formData = new FormData(form)
+    fetch('/', {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString()
+    }).then(() => setSubmitted(true)).catch((error) => alert(error))
+  }
   useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => form.addEventListener("submit", (e) => handleSubmit(form, e))), [])
   return (
     <Layout>
@@ -149,7 +149,7 @@ export default function Home() {
               <CheckBox name="subscribe" label="Subscribe for email updates?" />
             </FormField>
             <Box direction="row" justify="center" margin={{ top: 'large' }}>
-              <Button type="submit" label="Update" primary />
+              <Button type="submit" disabled={submitted} label={submitted ? "Thanks 🎉" : "Submit"} primary />
             </Box>
           </Form>
         </Box>
