@@ -64,9 +64,19 @@ const content = {
   }
 }
 
+const handleSubmit = (form, e) => {
+  e.preventDefault()
+  let formData = new FormData(form)
+  fetch('/', {
+    method: 'POST',
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(formData).toString()
+  }).then(() => console.log('Form successfully submitted')).catch((error) => alert(error))
+}
+
 export default function Home() {
   const [index, setIndex] = useState(0);
-  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => form.setAttribute("netlify", true)), [])
+  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => form.addEventListener("submit", (e) => handleSubmit(form, e))), [])
   return (
     <Layout>
       <Box round margin={'large'} pad={{ bottom: "large" }} id={'home'}> 
