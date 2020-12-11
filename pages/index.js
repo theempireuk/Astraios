@@ -130,7 +130,7 @@ export default function Home() {
                   { fixed: '@' },
                   { regexp: /^[\w]+$/, placeholder: 'my' },
                   { fixed: '.' },
-                  { regexp: /^[\w]+$/, placeholder: 'com' },
+                  { regexp: /^[\w.]+$/, placeholder: 'com' },
                 ]}
               />
             </FormField>
