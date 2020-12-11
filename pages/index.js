@@ -76,7 +76,11 @@ export default function Home() {
       body: new URLSearchParams(formData).toString()
     }).then(() => setSubmitted(true)).catch((error) => alert(error))
   }
-  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => form.addEventListener("submit", (e) => handleSubmit(form, e))), [])
+  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => {
+    orm.setAttribute("name", "Astraios Beta Signup")
+    form.setAttribute("data-netlify", true)
+    form.addEventListener("submit", (e) => handleSubmit(form, e))
+  }), [])
   return (
     <Layout>
       <Box round margin={'large'} pad={{ bottom: "large" }} id={'home'}> 
@@ -130,6 +134,7 @@ export default function Home() {
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'dark-1'} round pad={'large'}>
           <Form>
+            <input type="hidden" name="form-name" value="Astraios Beta Signup" />
             <FormField label="Name" name="name">
               <TextInput name="name" />
             </FormField>
