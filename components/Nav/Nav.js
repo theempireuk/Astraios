@@ -3,32 +3,31 @@ import React from 'react';
 import { Wrapper } from './styles';
 
 const links = [
-	{
-		text: 'Blog',
-		location: '#blog'
-	},
+	// {
+	// 	text: 'Blog',
+	// 	location: '#blog'
+	// },
 	{
 		text: 'Features',
-		location: '#feature'
-	},
-	{
-		text: 'Contact',
-		location: '#contact'
+		location: '#features'
 	}
 ]
 
-export const Nav = (props) => {
+export const Nav = () => {
 	return (
 		<Box direction={"row"} align={"center"} justify={"between"} margin={"30px 0px"} pad={'small'} background={'light-1'} round>
-			<Box pad={'5px'} height="60px" width="60px">
+			<Box height={'60px'} width={'60px'} align={'center'}>
 				<Image
-					fit="cover"
+					fit="contain"
 					src="/astraios.png"
+					height={'50px'}
 				/>
 			</Box>
 			<NavLinks/>
 			<Wrapper>
-				<Button primary label={<Text style={{fontWeight: 'bold'}}>Login</Text>}/>
+				<Anchor key={"sign-up"} href={"#contact"}>
+					<Button primary label={<Text style={{fontWeight: 'bold'}}>Sign Up</Text>}/>
+				</Anchor>
 			</Wrapper>
 			<MobileNav/>
 		</Box>
@@ -55,7 +54,7 @@ const MobileNav = () => {
 					{ label: 'Home', href: '#home'},
 					{ label: 'Blog', href: '#blog'},
 					{ label: 'Features', href: '#features'},
-					{ label: 'Login'}
+					{ label: 'Sign Up', href: '#contact'}
 				]} justifyContent={"end"} style={{width: '100px'}}>
 			</Menu>
 		</Wrapper>

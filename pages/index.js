@@ -1,12 +1,11 @@
 import { Anchor, Box, Button, Heading, Image, Paragraph, Text, Form, FormField, TextInput, MaskedInput, CheckBox } from 'grommet';
 import { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { Feature } from '../components/Feature/Feature';
-import Layout from '../components/Layout'
+import Layout from '../components/Layout';
 
 const content = {
-  heading: "A self-hosted cloud services manager.",
-  description: <>Automated architecture for extraordinary applications.<br />Built Secure, Scalable and Cost-Effective on AWS.</>,
+  heading: "Your cloud services engineer.",
+  description: <>Automatically deploy and manage your own backend systems. Powered by AWS.<br /><br />Optimized by experts for security, scalability and cost-effectiveness.</>,
   callToAction:  {
     text: "Sign up for beta access",
     link: "#contact"
@@ -14,7 +13,7 @@ const content = {
   callToAction2:  {
     text: "Learn more",
     link: "#features",
-    description: "All the informtaion you need to get started."
+    description: "All the information you need to get started."
   },
   blog: {
     heading: "Blog Posts",
@@ -42,19 +41,29 @@ const content = {
     description: "Built to save you time and money.",
     features: [
       {
-        title: 'this is the title for first',
-        body: 'this is the main bit of the feature and you will love it so much as million of users are using it.',
+        image: '/astraios_ui_icon.png',
+        title: 'Service Control Centre',
+        body: 'Our hand-built UI lets you effortlessly deploy and manage environments and services for as many applications as you can think of.',
         reverse: false
       },
       {
-        title: 'this is the title for second',
-        body: 'this is the main bit of the feature and i guarantee you that its amazing and its famous.',
+        image: 'https://d0.awsstatic.com/logos/powered-by-aws.png',
+        title: 'AWS Integration',
+        body: 'Databases, Servers, File Storage & Email Services and Domain Management. Auto-scaling to meet demand at a fraction of regular on-demand prices.',
+        readMore: "",
         reverse: true
       },
       {
-        title: 'this is the title for last',
-        body: 'this is the main bit of the feature and please buy this and i dont have anymore words.',
+        image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
+        title: 'Container Deployment',
+        body: 'Reliable and stateless deployments with no server dependence allows spot-instancing to maximise cost-performance.',
         reverse: false
+      },
+      {
+        image: 'https://strapi.io/assets/strapi-logo-dark.svg',
+        title: 'Utilising Strapi',
+        body: "Manage and interact with your application's users and data through the world's most popular open-source Node.js CMS, Strapi.",
+        reverse: true
       }
     ]
   },
@@ -85,28 +94,40 @@ export default function Home() {
   }), [])
   return (
     <Layout>
-      <Box round margin={'large'} pad={{ bottom: "large" }} id={'home'}> 
-        <Heading size={'large'} responsive>{content.heading}</Heading>
-        <Paragraph size={'large'} responsive>{content.description}</Paragraph>
-        <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
-          <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
-        </Box>
-        <Box direction={'row-responsive'} wrap gap={'small'} align={"center"}>
-          <Anchor label={content.callToAction2.text} href={content.callToAction2.link} size={"medium"} color={'#7D4CDB'}/>
-          <Text size={"medium"}>{content.callToAction2.description}</Text>
-        </Box>
-      </Box>
-      <Box round margin={'large'} pad={{ top: "large", bottom: "large" }} id={'blog'}>
-        <Heading size={'medium'} margin={'none'} responsive>{content.blog.heading}</Heading>
-        <Paragraph size={'small'} responsive>{content.blog.description}</Paragraph>
-        <Box direction={'column'} gap={'medium'} pad={"medium"} round background={'dark-1'}>
-        <Box direction={'row'} gap={'small'} align={"center"} justify={"center"}>
-          <Box direction={"row-responsive"} gap={'small'} align={"center"} justify={"center"} style={{minWidth: '250px'}}>
-            {content.blog.articles.map(({buttonTitle}, key) => 
-              <Button primary size={"small"} label={buttonTitle} key={key} disabled={ index === key } onClick={() => setIndex(key)}/>
-            )}
+      {/* HERO SECTION */}
+      <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ bottom: "large" }} id={'home'}> 
+        <Heading size={'large'} margin={{ bottom: "none" }} responsive>{content.heading}</Heading>
+        <Box direction={'row'} align={'end'} wrap>
+          <Box flex={'grow'} margin={{ vertical: "2rem", horizontal: "auto" }}>
+            <Paragraph size={'large'} responsive>{content.description}</Paragraph>
+            <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
+              <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
+            </Box>
+            <Box direction={'row-responsive'} wrap gap={'small'} align={"center"}>
+              <Anchor label={content.callToAction2.text} href={content.callToAction2.link} size={"medium"} color={'#7D4CDB'}/>
+              <Text size={"medium"}>{content.callToAction2.description}</Text>
+            </Box>
+          </Box>
+          <Box margin={{ vertical: "2rem", horizontal: "auto" }} width={'medium'} height={'medium'}>
+            <Image
+              fit="contain"
+              src="/astraios_checklist.png"
+            />
           </Box>
         </Box>
+      </Box>
+      {/* BLOG SECTION */}
+      {/* <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'blog'}>
+        <Heading size={'medium'} margin={'none'} responsive>{content.blog.heading}</Heading>
+        <Paragraph size={'small'} responsive>{content.blog.description}</Paragraph>
+        <Box direction={'column'} gap={'medium'} pad={"medium"} round background={'light-1'}>
+          <Box direction={'row'} gap={'small'} align={"center"} justify={"center"}>
+            <Box direction={"row-responsive"} gap={'small'} align={"center"} justify={"center"} style={{minWidth: '250px'}}>
+              {content.blog.articles.map(({buttonTitle}, key) => 
+                <Button primary size={"small"} label={buttonTitle} key={key} disabled={ index === key } onClick={() => setIndex(key)}/>
+              )}
+            </Box>
+          </Box>
           <Box direction={"row-responsive"} gap={'medium'}>
             <Box align={"center"} justify={'center'}>
               <Image src={'/spaceship.png'} style={{borderRadius: '20px', maxWidth: '200px'}}/>
@@ -120,21 +141,23 @@ export default function Home() {
             </Box>
           </Box>
         </Box>
-      </Box>
-      <Box direction={'column'} align={'center'} margin={'medium'} pad={{ top: "large", bottom: "large" }} id={'features'}>
+      </Box> */}
+      {/* FEATURES */}
+      <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'features'}>
         <Heading size={'medium'} margin={'none'} responsive>{content.features.heading}</Heading>
         <Paragraph size={'small'} responsive>{content.features.description}</Paragraph>
-        {content.features.features.map(({title, body, reverse}, key) => 
-          <Feature title={title} body={body} key={key} reverse={reverse}/>
+        {content.features.features.map(({image, title, body, reverse}, key) => 
+          <Feature image={image} title={title} body={body} key={key} reverse={reverse}/>
         )}
         <Box direction={'row-responsive'} responsive wrap gap={'small'} align={"center"} margin={'large'}>
           <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
         </Box>
       </Box>
-      <Box direction={'column'} align={'center'} margin={'medium'} pad={{ top: "large", bottom: "large" }} id={'contact'}>
+      {/* SIGNUP */}
+      <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'contact'}>
         <Heading size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
-        <Box align={"center"} margin={'large'} background={'dark-1'} round pad={'large'}>
+        <Box align={"center"} margin={'large'} background={'light-1'} round pad={'large'}>
           <Form name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="Astraios Beta Signup" />
             <FormField label="Name" name="name">
@@ -153,7 +176,7 @@ export default function Home() {
               />
             </FormField>
             <FormField name="subscribe">
-              <CheckBox name="subscribe" label="Subscribe for email updates?" />
+              <CheckBox name="subscribe" label="Subscribe for email updates?" checked />
             </FormField>
             <Box direction="row" justify="center" margin={{ top: 'large' }}>
               <Button type="submit" disabled={submitted} label={submitted ? "Thanks 🎉" : "Submit"} primary />
