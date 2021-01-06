@@ -1,6 +1,5 @@
 import { Box, Text } from 'grommet';
 import React from 'react';
-import { Wrapper } from './styles';
 
 export const Announcement = ({ children }) => {
 	return (

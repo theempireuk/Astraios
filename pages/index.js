@@ -1,5 +1,5 @@
-import { Anchor, Box, Button, Heading, Image, Paragraph, Text, Form, FormField, TextInput, MaskedInput, CheckBox } from 'grommet';
-import { useState, useEffect } from 'react';
+import { Anchor, Box, Button, Heading, Image, Paragraph, Text, Form, FormField, TextInput, MaskedInput, CheckBox, Select } from 'grommet';
+import { useState, useCallback } from 'react';
 import { Feature } from '../components/Feature/Feature';
 import Layout from '../components/Layout';
 
@@ -43,27 +43,28 @@ const content = {
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Our hand-built UI lets you effortlessly deploy and manage environments and services for as many applications as you can think of.',
-        reverse: false
+        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services. Empowering you and your team with rapid backend development that will support your feature-rich user experiences.',
+        reverse: true
       },
       {
         image: 'https://d0.awsstatic.com/logos/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage & Email Services and Domain Management. Auto-scaling to meet demand at a fraction of regular on-demand prices.',
-        readMore: "",
-        reverse: true
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof. Utilising auto-scaling spot instances to decimate prices. Built to support projects across multiple AWS accounts.',
+        reverse: false
       },
       {
         image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
         title: 'Container Deployment',
-        body: 'Reliable and stateless deployments with no server dependence allows spot-instancing to maximise cost-performance.',
-        reverse: false
+        body: 'Reliable and stateless deployments enable auto-recovering production services and scalability. Use the default Strapi image to instantly connect all of your services through an API and visual CMS or provide your own image.',
+        readMore: "https://www.docker.com/",
+        reverse: true
       },
       {
         image: 'https://strapi.io/assets/strapi-logo-dark.svg',
         title: 'Utilising Strapi',
         body: "Manage and interact with your application's users and data through the world's most popular open-source Node.js CMS, Strapi.",
-        reverse: true
+        readMore: "https://strapi.io/",
+        reverse: false
       }
     ]
   },
@@ -73,25 +74,38 @@ const content = {
   }
 }
 
+const formData = {
+  jobOptions: [
+    "Software Development Agency",
+    "Freelance Software Developer",
+    "Product Manager",
+    "Project Manager",
+    "Business Owner",
+    "Hobbyist/Tech-enthusiast"
+  ]
+}
+
 export default function Home() {
   const [index, setIndex] = useState(0)
+  const [formValue, setFormValue] = useState({
+    job: formData.jobOptions[0],
+    subscribe: true
+  })
   const [submitted, setSubmitted] = useState(false)
-  // const handleSubmit = (form, e) => {
-  //   e.preventDefault()
-  //   let formData = new FormData(form)
-  //   fetch('/', {
-  //     method: 'POST',
-  //     headers: { "Content-Type": "application/x-www-form-urlencoded" },
-  //     body: new URLSearchParams(formData).toString()
-  //   }).then(() => setSubmitted(true)).catch((error) => alert(error))
-  // }
-  useEffect(() => Array.from(document.getElementsByTagName('form')).forEach(form => {
-    // form.setAttribute("name", "Astraios Beta Signup")
-    // form.setAttribute("form-name", "Astraios Beta Signup")
-    // form.setAttribute("data-netlify", true)
-    // form.addEventListener("submit", (e) => handleSubmit(form, e))
-    form.addEventListener("submit", (e) => setSubmitted(true))
-  }), [])
+  const onChange = useCallback(nextValue => setFormValue(nextValue), [])
+
+  // netlify forms fcns
+  const encode = (data) => Object.keys(data).map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])).join("&")
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    let submission = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode(formValue)
+    })
+    if (submission) setSubmitted(true)
+  }
+
   return (
     <Layout>
       {/* HERO SECTION */}
@@ -108,7 +122,7 @@ export default function Home() {
               <Text size={"medium"}>{content.callToAction2.description}</Text>
             </Box>
           </Box>
-          <Box margin={{ vertical: "2rem", horizontal: "auto" }} width={'medium'} height={'medium'}>
+          <Box margin={{ vertical: "2rem", horizontal: "auto" }} width={'20rem'} height={'20rem'}>
             <Image
               fit="contain"
               src="/astraios_checklist.png"
@@ -144,10 +158,10 @@ export default function Home() {
       </Box> */}
       {/* FEATURES */}
       <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'features'}>
-        <Heading size={'medium'} margin={'none'} responsive>{content.features.heading}</Heading>
+        <Heading textAlign={'center'} size={'medium'} margin={'none'} responsive>{content.features.heading}</Heading>
         <Paragraph size={'small'} responsive>{content.features.description}</Paragraph>
-        {content.features.features.map(({image, title, body, reverse}, key) => 
-          <Feature image={image} title={title} body={body} key={key} reverse={reverse}/>
+        {content.features.features.map(({image, title, body, readMore, reverse}, key) => 
+          <Feature image={image} title={title} body={body} key={key} readMore={readMore} reverse={reverse}/>
         )}
         <Box direction={'row-responsive'} responsive wrap gap={'small'} align={"center"} margin={'large'}>
           <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
@@ -155,10 +169,10 @@ export default function Home() {
       </Box>
       {/* SIGNUP */}
       <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'contact'}>
-        <Heading size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
+        <Heading textAlign={'center'} size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'light-1'} round pad={'large'}>
-          <Form name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+          <Form value={formValue} onChange={onChange} onSubmit={handleSubmit} name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
             <input type="hidden" name="form-name" value="Astraios Beta Signup" />
             <FormField label="Name" name="name">
               <TextInput name="name" />
@@ -175,8 +189,15 @@ export default function Home() {
                 ]}
               />
             </FormField>
+            <FormField label="Job" name="job">
+              <Select
+                name="job"
+                options={formData.jobOptions}
+                value={formValue.job}
+              />
+            </FormField>
             <FormField name="subscribe">
-              <CheckBox name="subscribe" label="Subscribe for email updates?" checked />
+              <CheckBox name="subscribe" label="Subscribe for email updates?" checked={formValue.subscribe} />
             </FormField>
             <Box direction="row" justify="center" margin={{ top: 'large' }}>
               <Button type="submit" disabled={submitted} label={submitted ? "Thanks 🎉" : "Submit"} primary />

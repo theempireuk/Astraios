@@ -16,7 +16,7 @@ export const Layout = ({ children, ...props }) => {
 	return (
 		<Grommet theme={grommet}>
 			<GlobalStyles/>
-			{/* <Announcement>Announcement</Announcement> */}
+			<Announcement>Public Beta launching 2021!</Announcement>
 			<Wrapper {...props}>
 				<Nav/>
 				{children}
