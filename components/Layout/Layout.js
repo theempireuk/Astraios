@@ -1,20 +1,17 @@
-import React from 'react';
-import { Wrapper } from './styles';
-import Nav from '../Nav';
+import React from 'react'
+import { Wrapper } from './styles'
+import Nav from '../Nav'
 import Announcement from '../Announcement'
-import { Grommet, grommet, Footer, Text } from 'grommet';
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyles = createGlobalStyle`
-	body {
-		margin: 0px;
-	}
-`
+import { Grommet, grommet, Footer, Text } from 'grommet'
+import Head from 'next/head'
+import Style from "styled-jsx/style"
 
 export const Layout = ({ children, ...props }) => {
 	return (
 		<Grommet theme={grommet}>
-			<GlobalStyles/>
+			<Head>
+				<title>Astraios</title>
+			</Head>
 			<Announcement>Public Beta launching 2021!</Announcement>
 			<Wrapper {...props}>
 				<Nav/>
@@ -27,5 +24,5 @@ export const Layout = ({ children, ...props }) => {
 				</Text>
 			</Footer>
 		</Grommet>
-		)
+	)
 }
