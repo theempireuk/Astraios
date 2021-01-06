@@ -43,13 +43,14 @@ const content = {
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services across multiple projects. Empowering you and your team with rapid backend development that will support your feature-rich user experiences.',
+        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services across multiple projects. Empowering you and your team with rapid backend development for feature-rich user experiences.',
         reverse: true
       },
       {
-        image: 'https://d0.awsstatic.com/logos/powered-by-aws.png',
+        image: '/powered-by-aws.png',
         title: 'AWS Integration',
         body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof. Utilising auto-scaling spot instances to decimate prices. Built to support projects on multiple AWS accounts.',
+        readMore: "https://aws.amazon.com/ec2/spot/",
         reverse: false
       },
       {
@@ -88,7 +89,6 @@ const formData = {
 
 export default function Home() {
   const [formValue, setFormValue] = useState({
-    job: formData.jobOptions[0],
     subscribe: true
   })
   const [submitted, setSubmitted] = useState(false)
@@ -175,7 +175,7 @@ export default function Home() {
           <Form value={formValue} onChange={onChange} onSubmit={handleSubmit} name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
             {/* <input type="hidden" name="form-name" value="Astraios Beta Signup" /> */}
             <FormField label="Name" name="name">
-              <TextInput name="name" />
+              <TextInput name="name" placeholder="John Doe" />
             </FormField>
             <FormField label="Email" name="email" required>
               <MaskedInput
@@ -183,7 +183,7 @@ export default function Home() {
                 mask={[
                   { regexp: /^[\w\-_.]+$/, placeholder: 'example' },
                   { fixed: '@' },
-                  { regexp: /^[\w]+$/, placeholder: 'my' },
+                  { regexp: /^[\w]+$/, placeholder: 'mail' },
                   { fixed: '.' },
                   { regexp: /^[\w.]+$/, placeholder: 'com' },
                 ]}
@@ -194,6 +194,7 @@ export default function Home() {
                 name="job"
                 options={formData.jobOptions}
                 value={formValue.job}
+                placeholder="Select..."
               />
             </FormField>
             <FormField name="subscribe">

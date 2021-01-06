@@ -16,22 +16,21 @@ const links = [
 export const Nav = () => {
 	return (
 		<Box direction={"row"} align={"center"} justify={"between"} margin={"30px 0px"} pad={'small'} background={'light-1'} round>
-			<Box height={'80px'} width={'120px'} align={'center'}>
+			<Box height={'70px'} width={'120px'} align={'start'} pad={{ left: "10px", top: "3px" }}>
 				<Image
 					fit="contain"
 					src="/astraios.png"
-					height={'50px'}
 				/>
 			</Box>
 			<NavLinks/>
-			<Box width={'120px'}>
+			<Wrapper width={'120px'}>
 				<Anchor key={"log-in"} href={"#contact"}>
 					<Button primary label={<Text style={{fontWeight: 'bold'}}>Log in</Text>}/>
 				</Anchor>
-			</Box>
+			</Wrapper>
 			<MobileNav/>
 		</Box>
-		)
+	)
 }
 
 const NavLinks = () => {
@@ -47,14 +46,13 @@ const NavLinks = () => {
 }
 
 const MobileNav = () => {
-
 	return(
 		<Wrapper mobile>
 			<Menu items={[
 					{ label: 'Home', href: '#home'},
-					{ label: 'Blog', href: '#blog'},
+					// { label: 'Blog', href: '#blog'},
 					{ label: 'Features', href: '#features'},
-					{ label: 'Sign Up', href: '#contact'}
+					{ label: 'Log in', href: '#contact'}
 				]} justifyContent={"end"} style={{width: '100px'}}>
 			</Menu>
 		</Wrapper>
