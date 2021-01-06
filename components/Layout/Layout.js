@@ -4,7 +4,6 @@ import Nav from '../Nav'
 import Announcement from '../Announcement'
 import { Grommet, grommet, Footer, Text } from 'grommet'
 import Head from 'next/head'
-import Style from "styled-jsx/style"
 
 export const Layout = ({ children, ...props }) => {
 	return (
