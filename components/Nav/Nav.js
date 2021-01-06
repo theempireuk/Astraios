@@ -16,7 +16,7 @@ const links = [
 export const Nav = () => {
 	return (
 		<Box direction={"row"} align={"center"} justify={"between"} margin={"30px 0px"} pad={'small'} background={'light-1'} round>
-			<Box height={'60px'} width={'60px'} align={'center'}>
+			<Box height={'80px'} width={'120px'} align={'center'}>
 				<Image
 					fit="contain"
 					src="/astraios.png"
@@ -24,11 +24,11 @@ export const Nav = () => {
 				/>
 			</Box>
 			<NavLinks/>
-			<Wrapper>
-				<Anchor key={"sign-up"} href={"#contact"}>
-					<Button primary label={<Text style={{fontWeight: 'bold'}}>Sign Up</Text>}/>
+			<Box width={'120px'}>
+				<Anchor key={"log-in"} href={"#contact"}>
+					<Button primary label={<Text style={{fontWeight: 'bold'}}>Log in</Text>}/>
 				</Anchor>
-			</Wrapper>
+			</Box>
 			<MobileNav/>
 		</Box>
 		)

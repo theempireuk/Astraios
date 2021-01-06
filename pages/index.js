@@ -43,13 +43,13 @@ const content = {
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services. Empowering you and your team with rapid backend development that will support your feature-rich user experiences.',
+        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services across multiple projects. Empowering you and your team with rapid backend development that will support your feature-rich user experiences.',
         reverse: true
       },
       {
         image: 'https://d0.awsstatic.com/logos/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof. Utilising auto-scaling spot instances to decimate prices. Built to support projects across multiple AWS accounts.',
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof. Utilising auto-scaling spot instances to decimate prices. Built to support projects on multiple AWS accounts.',
         reverse: false
       },
       {
@@ -76,8 +76,9 @@ const content = {
 
 const formData = {
   jobOptions: [
-    "Software Development Agency",
-    "Freelance Software Developer",
+    "Software Developer - Agency",
+    "Software Developer - Product",
+    "Software Developer - Freelance",
     "Product Manager",
     "Project Manager",
     "Business Owner",
@@ -86,7 +87,6 @@ const formData = {
 }
 
 export default function Home() {
-  const [index, setIndex] = useState(0)
   const [formValue, setFormValue] = useState({
     job: formData.jobOptions[0],
     subscribe: true
