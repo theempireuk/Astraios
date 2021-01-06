@@ -16,7 +16,7 @@ const links = [
 export const Nav = () => {
 	return (
 		<Box direction={"row"} align={"center"} justify={"between"} margin={"30px 0px"} pad={'small'} background={'light-1'} round>
-			<Box height={'70px'} width={'120px'} align={'start'} pad={{ left: "10px", top: "3px" }}>
+			<Box height={'70px'} width={'120px'} align={'center'}>
 				<Image
 					fit="contain"
 					src="/astraios.png"
