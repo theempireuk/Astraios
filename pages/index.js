@@ -101,7 +101,7 @@ export default function Home() {
     let submission = await fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode(formValue)
+      body: encode({ ...formValue, "form-name": "Astraios Beta Signup"  })
     })
     if (submission) setSubmitted(true)
   }
@@ -173,7 +173,7 @@ export default function Home() {
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'light-1'} round pad={'large'}>
           <Form value={formValue} onChange={onChange} onSubmit={handleSubmit} name="Astraios Beta Signup" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
-            <input type="hidden" name="form-name" value="Astraios Beta Signup" />
+            {/* <input type="hidden" name="form-name" value="Astraios Beta Signup" /> */}
             <FormField label="Name" name="name">
               <TextInput name="name" />
             </FormField>
