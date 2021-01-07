@@ -4,9 +4,11 @@ import Feature from '@components/Feature';
 import Layout from '@layouts/default';
 
 const content = {
-  heading: "Automate your cloud services.",
-  descriptionLine1: "Deploy and manage your own production-ready backend systems, effortlessly. Powered by AWS.",
-  descriptionLine2: "Optimized by experts for security, scalability and cost-effectiveness.",
+  heading: "Need a custom backend for your app?",
+  description: [
+    "Deploy production-ready cloud infrastructure to your own AWS account. Build content immediately with Strapi CMS or deploy your own code.",
+    "Optimized by experts for security, scalability and cost-effectiveness.",
+  ],
   callToAction:  {
     text: "Sign up for beta access",
     link: "#contact"
@@ -44,27 +46,27 @@ const content = {
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Our hand-built UI lets you effortlessly deploy, monitor and manage your AWS services across multiple projects. Empowering you and your team with rapid backend development for feature-rich user experiences.',
+        body: 'Our hand-built UI lets you easily deploy, monitor and manage AWS services across multiple projects. No more wasting time on cloud engineering, Astraios gets you straight into developing fully-featured, content-rich user experiences.',
         reverse: true
       },
       {
         image: '/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof. Utilising auto-scaling spot instances to decimate prices. Built to support projects on multiple AWS accounts.',
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof means all under one bill. Astraios utilizes auto-scaling spot instance groups to decimate server costs and is built to support projects on multiple AWS accounts.',
         readMore: "https://aws.amazon.com/ec2/spot/",
         reverse: false
       },
       {
         image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
         title: 'Container Deployment',
-        body: 'Reliable and stateless deployments enable auto-recovering production services and scalability. Use the default Strapi image to instantly connect all of your services through an API and visual CMS or provide your own image.',
+        body: 'Reliable and stateless deployments enable fault tolerant and automatically scaling services so your app can always meet demand. Astraios provides a pre-configured Strapi image by default but you are free to deploy an image of your choice and manage environment variables for total control.',
         readMore: "https://www.docker.com/",
         reverse: true
       },
       {
         image: 'https://strapi.io/assets/strapi-logo-dark.svg',
         title: 'Utilising Strapi',
-        body: "Manage and interact with your application's users and data through the world's most popular open-source Node.js CMS, Strapi.",
+        body: "Manage user data and build content visually with the world's most popular open-source CMS, Strapi. Supported by a huge community, we love Strapi and we think you will to. Astraios connects Strapi to all of your project's cloud services automatically.",
         readMore: "https://strapi.io/",
         reverse: false
       }
@@ -112,8 +114,7 @@ export default function Home(props) {
         <Heading size={'large'} margin={{ bottom: "none" }} responsive>{content.heading}</Heading>
         <Box direction={'row'} align={'end'} wrap>
           <Box flex={'grow'} margin={{ vertical: "2rem", horizontal: "auto" }}>
-            <Paragraph size={'large'} responsive>{content.descriptionLine1}</Paragraph>
-            <Paragraph size={'large'} responsive>{content.descriptionLine2}</Paragraph>
+            {content.description.map(line =><Paragraph size={'large'} margin={'small'} responsive>{line}</Paragraph>)}
             <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
               <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
             </Box>
