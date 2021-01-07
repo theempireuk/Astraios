@@ -1,7 +1,7 @@
 import React from 'react'
 import { Wrapper } from './styles'
-import Nav from '../Nav'
-import Announcement from '../Announcement'
+import Nav from '@components/Nav'
+import Announcement from '@components/Announcement'
 import { Grommet, grommet, Footer, Text } from 'grommet'
 import Head from 'next/head'
 
@@ -9,7 +9,8 @@ export const Layout = ({ children, ...props }) => {
 	return (
 		<Grommet theme={grommet}>
 			<Head>
-				<title>Astraios</title>
+				<title>{props.title}</title>
+				<meta name='description' content={props.description}/>
 			</Head>
 			<Announcement>Public Beta launching 2021!</Announcement>
 			<Wrapper {...props}>

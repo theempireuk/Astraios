@@ -1,11 +1,12 @@
 import { Anchor, Box, Button, Heading, Image, Paragraph, Text, Form, FormField, TextInput, MaskedInput, CheckBox, Select } from 'grommet';
 import { useState, useCallback } from 'react';
-import { Feature } from '../components/Feature/Feature';
-import Layout from '../components/Layout';
+import Feature from '@components/Feature';
+import Layout from '@layouts/default';
 
 const content = {
-  heading: "Your cloud services engineer.",
-  description: <>Automatically deploy and manage your own backend systems. Powered by AWS.<br /><br />Optimized by experts for security, scalability and cost-effectiveness.</>,
+  heading: "Automate your cloud services.",
+  descriptionLine1: "Deploy and manage your own production-ready backend systems, effortlessly. Powered by AWS.",
+  descriptionLine2: "Optimized by experts for security, scalability and cost-effectiveness.",
   callToAction:  {
     text: "Sign up for beta access",
     link: "#contact"
@@ -87,10 +88,8 @@ const formData = {
   ]
 }
 
-export default function Home() {
-  const [formValue, setFormValue] = useState({
-    subscribe: true
-  })
+export default function Home(props) {
+  const [formValue, setFormValue] = useState({ subscribe: true })
   const [submitted, setSubmitted] = useState(false)
   const onChange = useCallback(nextValue => setFormValue(nextValue), [])
 
@@ -107,13 +106,14 @@ export default function Home() {
   }
 
   return (
-    <Layout>
+    <Layout title={'Astraios'} description={content.descriptionLine1}>
       {/* HERO SECTION */}
       <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ bottom: "large" }} id={'home'}> 
         <Heading size={'large'} margin={{ bottom: "none" }} responsive>{content.heading}</Heading>
         <Box direction={'row'} align={'end'} wrap>
           <Box flex={'grow'} margin={{ vertical: "2rem", horizontal: "auto" }}>
-            <Paragraph size={'large'} responsive>{content.description}</Paragraph>
+            <Paragraph size={'large'} responsive>{content.descriptionLine1}</Paragraph>
+            <Paragraph size={'large'} responsive>{content.descriptionLine2}</Paragraph>
             <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
               <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
             </Box>
