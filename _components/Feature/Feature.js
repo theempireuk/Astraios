@@ -1,6 +1,5 @@
 import { Anchor, Box, Heading, Image, Paragraph } from 'grommet';
 import React from 'react';
-import { Wrapper } from './styles';
 
 export const Feature = ({image, reverse, title, body, readMore}) => {
 	return (
