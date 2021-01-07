@@ -114,7 +114,7 @@ export default function Home(props) {
         <Heading size={'large'} margin={{ bottom: "none" }} responsive>{content.heading}</Heading>
         <Box direction={'row'} align={'end'} wrap>
           <Box flex={'grow'} margin={{ vertical: "2rem", horizontal: "auto" }}>
-            {content.description.map(line =><Paragraph size={'large'} margin={'small'} responsive>{line}</Paragraph>)}
+            {content.description.map((line, key) =><Paragraph key={key} size={'large'} margin={'small'} responsive>{line}</Paragraph>)}
             <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
               <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
             </Box>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Wrapper } from './styles'
 import Nav from '@components/Nav'
 import Announcement from '@components/Announcement'
-import { Grommet, grommet, Footer, Text } from 'grommet'
+import { Grommet, grommet, Footer, Text, Box, Image, Anchor, Paragraph } from 'grommet'
 import Head from 'next/head'
 
 export const Layout = ({ children, ...props }) => {
@@ -19,9 +19,17 @@ export const Layout = ({ children, ...props }) => {
 				<Footer/>
 			</Wrapper>
 			<Footer background="light-1" justify="center" pad="small">
-				<Text textAlign="center" size="small">
-					© 2021 Copyright Astraios
-				</Text>
+				<Box align="center">
+					<Anchor href="https://discord.gg/PTKf7D28YU">
+						<Box margin="auto" width="50px" height="50px">
+							<Image src="/Discord-Logo.png" alt="discord" fit="contain"/>
+						</Box>
+						<Paragraph margin={{ top: "none" }}>Join our Discord community</Paragraph>
+					</Anchor>
+					<Text textAlign="center" size="small">
+						© 2021 Copyright Astraios
+					</Text>
+				</Box>
 			</Footer>
 		</Grommet>
 	)
