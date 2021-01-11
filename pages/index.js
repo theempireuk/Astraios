@@ -6,7 +6,7 @@ import Layout from '@layouts/default';
 const content = {
   heading: "Need a custom backend for your app?",
   description: [
-    "Deploy production-ready cloud infrastructure to your own AWS account. Build content immediately with Strapi CMS or deploy your own code.",
+    "Deploy production-ready cloud infrastructure to your own AWS account. Build content immediately with Strapi CMS or use custom code.",
     "Optimized by experts for security, scalability and cost-effectiveness.",
   ],
   callToAction:  {

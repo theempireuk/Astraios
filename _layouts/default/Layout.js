@@ -4,15 +4,26 @@ import Nav from '@components/Nav'
 import Announcement from '@components/Announcement'
 import { Grommet, grommet, Footer, Text, Box, Image, Anchor, Paragraph } from 'grommet'
 import Head from 'next/head'
+import objectFitImages from 'object-fit-images'
+
+let theme = {
+	...grommet,
+	// this image extend is to polyfill object-fit in IE, why do we support IE you ask? Because Tom uses it...
+	image: {
+		extend: `font-family: 'object-fit: contain;';`
+	}
+}
 
 export const Layout = ({ children, ...props }) => {
+	// IE object-fit polyfill
+	objectFitImages()
 	return (
-		<Grommet theme={grommet}>
+		<Grommet theme={theme}>
 			<Head>
 				<title>{props.title}</title>
 				<meta name='description' content={props.description}/>
 			</Head>
-			<Announcement>Public Beta launching 2021!</Announcement>
+			<Announcement>Beta launch imminent - sign up now!</Announcement>
 			<Wrapper {...props}>
 				<Nav/>
 				{children}
