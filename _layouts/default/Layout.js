@@ -23,7 +23,7 @@ export const Layout = ({ children, ...props }) => {
 				<title>{props.title}</title>
 				<meta name='description' content={props.description}/>
 			</Head>
-			<Announcement>Beta launch imminent - sign up now!</Announcement>
+			<Announcement><Anchor href={props.announcement.link}>{props.announcement.text}</Anchor></Announcement>
 			<Wrapper {...props}>
 				<Nav/>
 				{children}

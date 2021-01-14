@@ -4,13 +4,17 @@ import Feature from '@components/Feature';
 import Layout from '@layouts/default';
 
 const content = {
-  heading: "Need a custom backend for your app?",
+  announcement: {
+    text: "testing imminent - stickers for all ❤️",
+    link: "#contact"
+  },
+  heading: <>Backend is now<br/>rocket-powered!</>,
   description: [
-    "Deploy production-ready cloud infrastructure to your own AWS account. Build content immediately with Strapi CMS or use custom code.",
-    "Optimized by experts for security, scalability and cost-effectiveness.",
+    "Deploy production-ready app services to AWS. Launch a full-spec solution or customize to your needs.",
+    "Optimized by experts for cost-effective scaling and security.",
   ],
   callToAction:  {
-    text: "Sign up for beta access",
+    text: "Sign up to join testing",
     link: "#contact"
   },
   callToAction2:  {
@@ -23,17 +27,17 @@ const content = {
     description: "Take a moment to learn about us and our product.",
     articles: [
       {
-        buttonTitle: 'Article 1',
+        buttonTitle: 'Community',
         articleTitle: 'We are International',
         articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
       },
       {
-        buttonTitle: 'Article 2',
+        buttonTitle: 'Curiosity',
         articleTitle: 'We are fast and reliable',
         articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
       },
       {
-        buttonTitle: 'Article 3',
+        buttonTitle: 'velocity',
         articleTitle: 'We jus hit 1 million active users',
         articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
       }
@@ -46,35 +50,38 @@ const content = {
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Our hand-built UI lets you easily deploy, monitor and manage AWS services across multiple projects. No more wasting time on cloud engineering, Astraios gets you straight into developing fully-featured, content-rich user experiences.',
+        body: 'Deploy and manage your projects through our simple interface. Access your services and start developing rich user experiences. Work across more than one AWS account and capitalise on free tier or support your clients.',
+        readMore: "https://aws.amazon.com/free/",
         reverse: true
       },
       {
         image: '/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage, Email Services and Domain Management, all under one roof means all under one bill. Astraios utilizes auto-scaling spot instance groups to decimate server costs and is built to support projects on multiple AWS accounts.',
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management. All under one roof means all under one bill. Utilise free tier services and spot instancing to decimate costs. ',
         readMore: "https://aws.amazon.com/ec2/spot/",
         reverse: false
       },
       {
         image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
         title: 'Container Deployment',
-        body: 'Reliable and stateless deployments enable fault tolerant and automatically scaling services so your app can always meet demand. Astraios provides a pre-configured Strapi image by default but you are free to deploy an image of your choice and manage environment variables for total control.',
+        body: 'Reliable and stateless code enables fault-tolerant scaling so you always meet demand. Deploy an image of your choice and manage environment variables for total control.',
         readMore: "https://www.docker.com/",
         reverse: true
       },
       {
         image: 'https://strapi.io/assets/strapi-logo-dark.svg',
         title: 'Utilising Strapi',
-        body: "Manage user data and build content visually with the world's most popular open-source CMS, Strapi. Supported by a huge community, we love Strapi and we think you will to. Astraios connects Strapi to all of your project's cloud services automatically.",
+        body: "Manage users and build content with the world's most popular open-source CMS. Auto-connected to your AWS services. Supported by a huge community, we love Strapi and think you will to.",
         readMore: "https://strapi.io/",
         reverse: false
       }
     ]
   },
   contact: {
-    heading: "Sign up for beta access",
-    description: <>Launching 2021.<br />Stay in the loop with email updates.</>
+    heading: <>Stay in the loop.</>,
+    description: <>
+      Hey you, thanks for <i>sticking</i> around 💝<br/><br />We're building a small testing community and would love you to be a part of it. Earn an exclusive sticker for helping.
+    </>
   }
 }
 
@@ -108,14 +115,14 @@ export default function Home(props) {
   }
 
   return (
-    <Layout title={'Astraios'} description={content.descriptionLine1}>
+    <Layout title={'Astraios'} announcement={content.announcement} description={content.description[0]}>
       {/* HERO SECTION */}
-      <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ bottom: "large" }} id={'home'}> 
-        <Heading size={'large'} margin={{ bottom: "none" }} responsive>{content.heading}</Heading>
+      <Box round margin={{ top: 'small', horizontal: 'small', bottom: 'large' }} id={'home'}> 
+        <Heading size={'large'} margin={{ bottom: "medium" }} responsive>{content.heading}</Heading>
         <Box direction={'row'} align={'end'} wrap>
-          <Box flex={'grow'} margin={{ vertical: "2rem", horizontal: "auto" }}>
-            {content.description.map((line, key) =><Paragraph key={key} size={'large'} margin={'small'} responsive>{line}</Paragraph>)}
-            <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ top: "medium", bottom: "medium" }}>
+          <Box flex={'grow'} margin={{ vertical: "small", horizontal: "none" }}>
+            {content.description.map((line, key) =><Paragraph key={key} size={'large'} margin={{ vertical: 'small', horizontal: 'none' }} responsive>{line}</Paragraph>)}
+            <Box direction={'row-responsive'} gap={'small'} align={"center"} margin={{ vertical: "large" }}>
               <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
             </Box>
             <Box direction={'row-responsive'} wrap gap={'small'} align={"center"}>
