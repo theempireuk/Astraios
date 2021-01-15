@@ -45,33 +45,33 @@ const content = {
   },
   features: {
     heading: "Features",
-    description: "Built to save you time and money.",
+    description: "Astraios (Astraeus, Greek mythology) is a titan and cosmic diety. We like to imagine web services as satellites. So let's make a constellation!",
     features: [
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Deploy and manage your projects through our simple interface. Access your services and start developing rich user experiences. Work across more than one AWS account and capitalise on free tier or support your clients.',
+        body: 'Deploy and manage your projects through our simple interface. Access all the information you need to integrate your backend into applications. Create projects on more than one AWS account and capitalise on free tier or support your clients.',
         readMore: "https://aws.amazon.com/free/",
         reverse: true
       },
       {
         image: '/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage, Email Services and Domain Management. All under one roof means all under one bill. Utilise free tier services and spot instancing to decimate costs. ',
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management. All under one roof means all under one bill. Utilising free tier services and spot instancing to decimate costs. ',
         readMore: "https://aws.amazon.com/ec2/spot/",
         reverse: false
       },
       {
         image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
         title: 'Container Deployment',
-        body: 'Reliable and stateless code enables fault-tolerant scaling so you always meet demand. Deploy an image of your choice and manage environment variables for total control.',
+        body: 'Reliable and stateless code enables fault-tolerant scaling so you always meet demand. Select an image of your choice and manage environment variables for total control of your code.',
         readMore: "https://www.docker.com/",
         reverse: true
       },
       {
         image: 'https://strapi.io/assets/strapi-logo-dark.svg',
-        title: 'Utilising Strapi',
-        body: "Manage users and build content with the world's most popular open-source CMS. Auto-connected to your AWS services. Supported by a huge community, we love Strapi and think you will to.",
+        title: 'Strapi CMS',
+        body: "Engage users and create content with the world's most popular open-source CMS & API. Automatically deployed (default option) and connected to your AWS services.",
         readMore: "https://strapi.io/",
         reverse: false
       }
@@ -167,7 +167,7 @@ export default function Home(props) {
       {/* FEATURES */}
       <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'features'}>
         <Heading textAlign={'center'} size={'medium'} margin={'none'} responsive>{content.features.heading}</Heading>
-        <Paragraph size={'small'} responsive>{content.features.description}</Paragraph>
+        <Paragraph size={'small'} margin={{ bottom: "large" }} textAlign={'center'} responsive>{content.features.description}</Paragraph>
         {content.features.features.map(({image, title, body, readMore, reverse}, key) => 
           <Feature image={image} title={title} body={body} key={key} readMore={readMore} reverse={reverse}/>
         )}
