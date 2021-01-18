@@ -22,56 +22,56 @@ const content = {
     link: "#features",
     description: "All the information you need to get started."
   },
-  blog: {
-    heading: "Blog Posts",
-    description: "Take a moment to learn about us and our product.",
-    articles: [
-      {
-        buttonTitle: 'Community',
-        articleTitle: 'We are International',
-        articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
-      },
-      {
-        buttonTitle: 'Curiosity',
-        articleTitle: 'We are fast and reliable',
-        articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
-      },
-      {
-        buttonTitle: 'velocity',
-        articleTitle: 'We jus hit 1 million active users',
-        articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
-      }
-    ]
-  },
+  // blog: {
+  //   heading: "Blog Posts",
+  //   description: "Take a moment to learn about us and our product.",
+  //   articles: [
+  //     {
+  //       buttonTitle: 'Community',
+  //       articleTitle: 'We are International',
+  //       articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
+  //     },
+  //     {
+  //       buttonTitle: 'Curiosity',
+  //       articleTitle: 'We are fast and reliable',
+  //       articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
+  //     },
+  //     {
+  //       buttonTitle: 'velocity',
+  //       articleTitle: 'We jus hit 1 million active users',
+  //       articleBody: 'We have reached over 100 coutries with our platform with over 1 million users enjoying this'
+  //     }
+  //   ]
+  // },
   features: {
     heading: "Features",
-    description: "Astraios (Astraeus, Greek mythology) is a titan and cosmic diety. We like to imagine web services as satellites. So let's make a constellation!",
+    description: "Astraios (Astraeus, Greek mythology) is a titan and cosmic diety. Imagine web services as satellites, Astraios creates your constellations.",
     features: [
       {
         image: '/astraios_ui_icon.png',
         title: 'Service Control Centre',
-        body: 'Deploy and manage your projects through our simple interface. Access all the information you need to integrate your backend into applications. Create projects on more than one AWS account and capitalise on free tier or support your clients.',
+        body: 'Deploy and manage your projects through our simple interface. Access all the information you need to integrate your backend into applications. Create projects on more than one AWS account to capitalise on free tier and support your clients.',
         readMore: "https://aws.amazon.com/free/",
         reverse: true
       },
       {
         image: '/powered-by-aws.png',
         title: 'AWS Integration',
-        body: 'Databases, Servers, File Storage, Email Services and Domain Management. All under one roof means all under one bill. Utilising free tier services and spot instancing to decimate costs. ',
+        body: 'Databases, Servers, File Storage, Email Services and Domain Management. Everything a modern application needs. All under one roof and all under one bill. Utilising free tier services and spot instancing to decimate costs.',
         readMore: "https://aws.amazon.com/ec2/spot/",
         reverse: false
       },
       {
         image: 'https://www.docker.com/sites/default/files/d8/2019-07/vertical-logo-monochromatic.png',
         title: 'Container Deployment',
-        body: 'Reliable and stateless code enables fault-tolerant scaling so you always meet demand. Select an image of your choice and manage environment variables for total control of your code.',
+        body: 'Reliable and stateless code enables fault-tolerant scaling so you always meet demand. Select an image of your choice and manage environment variables for complete customization of your API.',
         readMore: "https://www.docker.com/",
         reverse: true
       },
       {
         image: 'https://strapi.io/assets/strapi-logo-dark.svg',
         title: 'Strapi CMS',
-        body: "Engage users and create content with the world's most popular open-source CMS & API. Automatically deployed (default option) and connected to your AWS services.",
+        body: "Engage users and create content with the world's most popular open-source CMS. Automatically deployed (default option) and connected to your AWS services.",
         readMore: "https://strapi.io/",
         reverse: false
       }
@@ -80,7 +80,7 @@ const content = {
   contact: {
     heading: <>Stay in the loop.</>,
     description: <>
-      Hey you, thanks for <i>sticking</i> around 💝<br/><br />We're building a small testing community and would love you to be a part of it. Earn an exclusive sticker for helping.
+      Hey you, thanks for <i>sticking</i> around 💝<br/><br />Community testing starts soon and we would love you to be involved, sign up to stay informed.
     </>
   }
 }
@@ -117,7 +117,7 @@ export default function Home(props) {
   return (
     <Layout title={'Astraios'} announcement={content.announcement} description={content.description[0]}>
       {/* HERO SECTION */}
-      <Box round margin={{ top: 'small', horizontal: 'small', bottom: 'large' }} id={'home'}> 
+      {content.heading && content.description && <Box round margin={{ top: 'small', horizontal: 'small', bottom: 'large' }} id={'home'}> 
         <Heading size={'large'} margin={{ bottom: "medium" }} responsive>{content.heading}</Heading>
         <Box direction={'row'} align={'end'} wrap>
           <Box flex={'grow'} margin={{ vertical: "small", horizontal: "none" }}>
@@ -137,9 +137,9 @@ export default function Home(props) {
             />
           </Box>
         </Box>
-      </Box>
+      </Box>}
       {/* BLOG SECTION */}
-      {/* <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'blog'}>
+      {content.blog && <Box round margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'blog'}>
         <Heading size={'medium'} margin={'none'} responsive>{content.blog.heading}</Heading>
         <Paragraph size={'small'} responsive>{content.blog.description}</Paragraph>
         <Box direction={'column'} gap={'medium'} pad={"medium"} round background={'light-1'}>
@@ -163,9 +163,9 @@ export default function Home(props) {
             </Box>
           </Box>
         </Box>
-      </Box> */}
+      </Box>}
       {/* FEATURES */}
-      <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'features'}>
+      {content.features && <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'features'}>
         <Heading textAlign={'center'} size={'medium'} margin={'none'} responsive>{content.features.heading}</Heading>
         <Paragraph size={'small'} margin={{ bottom: "large" }} textAlign={'center'} responsive>{content.features.description}</Paragraph>
         {content.features.features.map(({image, title, body, readMore, reverse}, key) => 
@@ -174,9 +174,9 @@ export default function Home(props) {
         <Box direction={'row-responsive'} responsive wrap gap={'small'} align={"center"} margin={'large'}>
           <Anchor href={content.callToAction.link}><Button primary size={"large"} label={content.callToAction.text}/></Anchor>
         </Box>
-      </Box>
+      </Box>}
       {/* SIGNUP */}
-      <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'contact'}>
+      {content.contact && <Box direction={'column'} align={'center'} margin={{ vertical: 'large', horizontal: 'small' }} pad={{ top: "large", bottom: "large" }} id={'contact'}>
         <Heading textAlign={'center'} size={'medium'} margin={'none'} responsive>{content.contact.heading}</Heading>
         <Paragraph size={'small'} textAlign={'center'} responsive>{content.contact.description}</Paragraph>
         <Box align={"center"} margin={'large'} background={'light-1'} round pad={'large'}>
@@ -213,7 +213,7 @@ export default function Home(props) {
             </Box>
           </Form>
         </Box>
-      </Box>
+      </Box>}
     </Layout>
   )
 }
